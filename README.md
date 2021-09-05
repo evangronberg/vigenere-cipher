@@ -1,25 +1,31 @@
-## Vigenere Cipher
-A command line tool for using and breaking the Vigenere cipher.
+# Vigenère Cipher
+A command line tool for using and breaking the Vigenère cipher.
 
-### Usage
-To run, navigate to the project directory 
-and run `python vigenere.py` followed by one
-of the following commands:
+## Usage
+Navigate to the project directory and run `python vigenere.py` followed by one of these three commands:
 
-- `encrypt`\
-Specify an input text file via the `-i` flag, an output textfile via the `-o` flag, and a key via the `-k` flag.\
-*Example:*\
+- `encrypt`
+
+Encrypts a given plaintext using the specified key.\
+Specify an input text file via the `-i` flag, an output text file via the `-o` flag, and a key via the `-k` flag.
+
 `python vigenere.py encrypt -i plaintext.txt -o ciphertext.txt -k key`
+
 - `decrypt`
-Specify an input text file via the `-i` flag, an output textfile via the `-o` flag, and a key via the `-k` flag.\
-*Example:*\
+
+Decrypts a given ciphertext using the specified key.\
+Specify an input text file via the `-i` flag, an output text file via the `-o` flag, and a key via the `-k` flag.
+
 `python vigenere.py decrypt -i ciphertext.txt -o plaintext.txt -k key`
-- `crack`\
-Specify an input file via the `-i` flag (required) and an output file via the `-o` flag (optional - the plaintext is also outputted to the console).\
-*Example:*\
+
+- `crack`
+
+Analyzes a given ciphertext and outputs its plaintext, as well the key that was originally used to encrypt the message.\
+Specify an input text file via the `-i` flag (required) and an output text file via the `-o` flag (optional - the plaintext is also outputted to the console).
+
 `python vigenere.py crack -i ciphertext.txt`
 
-### Dependencies
+## Dependencies
 - `click`
 - `pyspellchecker`
 - `ftfy`
