@@ -1,9 +1,4 @@
 """
-Author: Evan Gronberg
-Email:  emg0011@uah.edu
-Date:   September 3, 2021
-Class:  CS 585 (Computer Security)
-
 Module for cracking the Vigenere cipher.
 """
 

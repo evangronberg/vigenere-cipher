@@ -1,3 +1,7 @@
+"""
+Module for running the command line application.
+"""
+
 import click
 from ftfy import fix_text
 from cipher import VigenereCipher
@@ -8,8 +12,8 @@ def cli():
     pass
 
 @click.command()
-@click.option('-f', '--filename')
-@click.option('-m', '--message')
+@click.option('-i', '--input_file', required=True)
+@click.option('-o', '--output_file', required=True)
 @click.option('-k', '--key', required=True)
 def encrypt(input_file, output_file, key):
     cipher = VigenereCipher()
