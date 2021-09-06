@@ -72,6 +72,13 @@ class VigenereCracker():
         potential_keys_word_counter = {}
         for key in potential_keys:
             potential_keys_word_counter[key] = self.get_num_of_misspelled_words(ciphertext, key)
+            # If get_num_of_misspelled_words went ahead
+            # and returned the plaintext, end the program
+            if isinstance(potential_keys_word_counter[key], str):
+                plaintext = potential_keys_word_counter[key]
+                end_time = time.time()
+                run_time = end_time - start_time
+                return plaintext, key, run_time
 
         # Sets the correct key to whichever potential
         # key resulted in the fewest number of non-English words
@@ -191,6 +198,11 @@ class VigenereCracker():
             potential_plaintext_words[index] = potential_plaintext_words[index].translate(str.maketrans('', '', self.PUNCTUATION))
 
         # Gets a list of all misspelled words in the potential plaintext
-        misspelled = self.spell_checker.unknown(potential_plaintext_words)
+        misspelled_words = self.spell_checker.unknown(potential_plaintext_words)
+        # If less than 5% of the words are misspelled,
+        # go ahead and return the plaintext
+        if len(misspelled_words) < (0.05 * len(potential_plaintext_words)):
+            return potential_plaintext
         # Returns the number of misspelled words in the potential plaintext
-        return len(misspelled)
+        else:
+            return len(misspelled_words)
