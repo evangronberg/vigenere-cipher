@@ -58,7 +58,7 @@ class VigenereCipher():
         for character in message:
             # If the character is punctuation,
             # simply add it to the output
-            if character in [' ', '.', ',', "'", '"', '?', '!', '’', '\n']:
+            if character in [' ', '.', ',', "'", '"', '?', '!', '’', '\n', '“', '”']:
                 output += character
                 continue
             # Otherwise, ciphers the character
@@ -96,7 +96,7 @@ class VigenereCipher():
         Verifies that the user's inputted
         strings consist only of letters and spaces.
         """
-        message_pattern = re.compile(r'^[a-zA-Z ,.!?\'"’\n]+$')
+        message_pattern = re.compile(r'^[a-zA-Z ,.!?\'"’”“\n]+$')
         key_pattern = re.compile(r'^[a-zA-Z]+$')
         if not re.fullmatch(message_pattern, message):
             return False

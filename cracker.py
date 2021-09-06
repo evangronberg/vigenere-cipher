@@ -33,7 +33,7 @@ class VigenereCracker():
 
     LETTERS = list(ALPHANUMERIC_MAPPING.keys())
 
-    PUNCTUATION = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~’\n'
+    PUNCTUATION = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~’\n“”'
 
     def __init__(self, key_length, num_test_chars):
         self.cipher = VigenereCipher()
