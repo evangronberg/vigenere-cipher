@@ -42,15 +42,22 @@ def decrypt(input_file, output_file, key):
 @click.command()
 @click.option('-i', '--input_file', required=True)
 @click.option('-o', '--output_file')
-def crack(input_file, output_file):
-    cracker = VigenereCracker()
+@click.option('-l', '--key_length', type=int, required=True)
+@click.option('-n', '--num_test_chars', type=int, default=3)
+def crack(input_file, output_file, key_length, num_test_chars):
+    cracker = VigenereCracker(key_length, num_test_chars)
     ciphertext_file = open(input_file, 'r')
     ciphertext = ciphertext_file.read()
     ciphertext = fix_text(ciphertext)
-    plaintext = cracker.crack_cipher(ciphertext)
+    plaintext, key, run_time = cracker.crack_cipher(ciphertext)
     if output_file:
         plaintext_file = open(output_file, 'w')
         plaintext_file.write(plaintext)
+
+    print('\nPlaintext:\n')
+    print(plaintext)
+    print('\nKey:     ' + key)
+    print('Runtime: ' + str(round(run_time, 4)) + ' sec')
 
 if __name__ == '__main__':
     cli.add_command(encrypt)
